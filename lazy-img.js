@@ -21,9 +21,42 @@ class LazyImage extends HTMLElement {
 
 	}
 
+	//Setters and Getters for image tag attributes
+
+	//Prevents attribute double setting
+	safeSetAttribute(attribute, value) {
+		if (this.getAttribute(attribute) !== value) this.setAttribute(attribute, value);
+	}
+
+	set src(value) {
+		this.safeSetAttribute('src', value);
+		if (this.visible) {
+			if (this.shadowImage) this.shadowImage.src = value;
+		}
+	}
+
+	get src() {
+		return this.getAttribute('src')
+	}
+
+	set alt(value) {
+		this.safeSetAttribute('alt', value);
+		// Set image alt
+		if (this.shadowImage) this.shadowImage.alt = value;
+	}
+
+	get alt() {
+		return this.getAttribute('alt')
+	}
+
+
+	//Set fade in animation for image
 	initElement(time) {
 		template.innerHTML = `
 		<style>
+			.loading{
+			  background: transparent url('loading_spinner.gif') center no-repeat;
+			}
 			.fadeImage {
 			    -webkit-animation: fadein ` + time + `ms; /* Safari, Chrome and Opera > 12.1 */
 			       -moz-animation: fadein ` + time + `ms; /* Firefox < 16 */
@@ -63,37 +96,8 @@ class LazyImage extends HTMLElement {
 			    to   { opacity: 1; }
 			}
 		</style>`;
-		template.innerHTML += `<img style="width: 100%;" class="fadeImage" id="image"/>`;
+		template.innerHTML += `<img style="width: 100%;" class="loading fadeImage" id="image"/>`;
 	}
-
-	//Setters and Getters for image tag attributes
-
-	//Prevents attribute double setting
-	safeSetAttribute(attribute, value) {
-		if (this.getAttribute(attribute) !== value) this.setAttribute(attribute, value);
-	}
-
-	set src(value) {
-		this.safeSetAttribute('src', value);
-		if (this.visible) {
-			if (this.shadowImage) this.shadowImage.src = value;
-		}
-	}
-
-	get src() {
-		return this.getAttribute('src')
-	}
-
-	set alt(value) {
-		this.safeSetAttribute('alt', value);
-		// Set image alt
-		if (this.shadowImage) this.shadowImage.alt = value;
-	}
-
-	get alt() {
-		return this.getAttribute('alt')
-	}
-
 
 	//Called everytime the element is connected to the DOM
 	connectedCallback() {
