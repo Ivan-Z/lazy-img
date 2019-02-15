@@ -1,6 +1,6 @@
 # lazy-img
 
-A simple natvie web component for lazy loading images once they are in view of the user.
+A simple natvie web component for lazy loading images once they are in view of the user. See index.html for a demo. 
 
 ### Usage:
 Import web component loader:  
@@ -16,5 +16,5 @@ Use the lazy-img the same way as any other HTML image tag:
 * `fadein` Time in milliseconds for fade-in animations
 
 ### Demo:
-
+[Codepen Demo](https://codepen.io/izdane/pen/BMGjPv )  
  
