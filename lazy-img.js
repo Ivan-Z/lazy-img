@@ -5,7 +5,6 @@ const isIntersecting = ({
 	isIntersecting
 }) => isIntersecting
 
-
 class LazyImage extends HTMLElement {
 	constructor() {
 		super();
@@ -48,7 +47,6 @@ class LazyImage extends HTMLElement {
 	get alt() {
 		return this.getAttribute('alt')
 	}
-
 
 	//Set fade in animation for image
 	initElement(time) {
@@ -125,7 +123,7 @@ class LazyImage extends HTMLElement {
 	}
 
 	static get observedAttributes() {
-		return ['src', 'alt'];
+		return ['src', 'alt', 'fadein'];
 	}
 
 	attributeChangedCallback(name, oldVal, newVal) {
@@ -162,7 +160,6 @@ class LazyImage extends HTMLElement {
 		this.observer = null;
 		delete this.observer;
 	}
-
 }
 
 
