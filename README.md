@@ -1,6 +1,6 @@
 # lazy-img
 
-A simple natvie web component for lazy loading images once they are in view of the user. See index.html for a demo. 
+A simple natvie web component for lazy loading images once they are in view of the user. See CodePen demo below.
 
 ### Usage:
 Import web component loader:  
@@ -8,7 +8,7 @@ Import web component loader:
 
 Import lazy-img.js:  
 `<script src="lazy-img.js"/>`  
-  
+
 Use the lazy-img the same way as any other HTML image tag:  
 `<lazy-img  fadein="5000" src="myImage.jpg" alt="my Image" />`
 
