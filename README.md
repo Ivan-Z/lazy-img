@@ -16,5 +16,5 @@ Use the lazy-img the same way as any other HTML image tag:
 * `fadein` Time in milliseconds for fade-in animations
 
 ### Demo:
-[Codepen Demo](https://codepen.io/izdane/pen/BMGjPv )  
+[CodePen Demo](https://codepen.io/izdane/pen/BMGjPv )  
  
