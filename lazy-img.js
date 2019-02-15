@@ -2,6 +2,10 @@ const tagName = 'lazy-img';
 var template = document.createElement('template');
 template.innerHTML = `<img id="image"/>`;
 
+const isIntersecting = ({
+	isIntersecting
+}) => isIntersecting
+
 
 class LazyImage extends HTMLElement {
 	constructor() {
@@ -26,7 +30,9 @@ class LazyImage extends HTMLElement {
 
 	set src(value) {
 		this.safeSetAttribute('src', value);
-		if (this.shadowImage) this.shadowImage.src = value;
+		if (this.visible){
+			if (this.shadowImage) this.shadowImage.src = value;
+		}
 	}
 
 	get src() {
@@ -59,10 +65,6 @@ class LazyImage extends HTMLElement {
 			this.shadowImage = this.shadowRoot.getElementById('image')
 		}
 
-		// Set the attributes of the shadow image
-		this.shadowImage.src = this.src;
-		this.shadowImage.alt = this.alt;
-
 		if ('IntersectionObserver' in window) {
 			this.initIntersectionObserver();
 		} else {
@@ -70,7 +72,6 @@ class LazyImage extends HTMLElement {
 		}
 
 	}
-
 
 	static get observedAttributes() {
 		return ['src', 'alt'];
@@ -81,7 +82,7 @@ class LazyImage extends HTMLElement {
 	}
 
 	observerCallback(entries) {
-		//if (entries.some(this.visisble)) this.visible = true
+		if (entries.some(isIntersecting)) this.visible = true
 	}
 
 	initIntersectionObserver() {
@@ -91,9 +92,25 @@ class LazyImage extends HTMLElement {
 		this.observer.observe(this);
 	}
 
+	set visible(value) {
+		if (value) {
+			this.shadowImage.src = this.src;
+			this.setAttribute('visible', '');
+			this.disconnectObserver();
+		} else {
+			this.removeAttribute('visible')
+		}
+	}
 
-	//Called each time the element is disconnected from the DOM
-	disconnectedCallback() {}
+	get visisble() {
+		return this.hasAttribute('visible')
+	}
+
+	disconnectObserver() {
+		this.observer.disconnect();
+		this.observer = null;
+		delete this.observer;
+	}
 
 }
 
