@@ -4,7 +4,7 @@ A simple natvie web component for lazy loading images once they are in view of t
 
 ### Usage:
 Import web component loader:  
-`<script src="https://unpkg.com/@webcomponents/webcomponentsjs/webcomponents-loader.js"/>`. 
+`<script src="https://unpkg.com/@webcomponents/webcomponentsjs/webcomponents-loader.js"/>`  
 Import lazy-img.js:  
 `<script src="lazy-img.js"/>`  
 Use the lazy-img the same way as any other HTML image tag:  
