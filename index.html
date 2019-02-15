@@ -3,10 +3,27 @@
   <head>
     <title>Lazy Image Loading</title>
       <script src="https://unpkg.com/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+      <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <script src="lazy-img.js"></script>
+    <style type="text/css">
+      .container{
+        font-family: 'Roboto', sans-serif;
+
+        margin: auto;
+        text-align: center;
+        width: 80%;
+        background-color: LightGrey;
+        padding: 10px;
+      }
+    </style>
   </head>
   <body>
-    <p style="height: 1200px;"></p>
-    <lazy-img src="https://images.unsplash.com/photo-1531040153975-38c7b2ceb3d7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80">
+    <div class="container">
+      <h1>Lazy Loading with native Web Components</h1>
+      <p>Scroll down to view images</p>
+      <p style="height: 100vh;"></p>
+      <lazy-img  src="https://images.unsplash.com/photo-1531040153975-38c7b2ceb3d7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80">
+      </lazy-img>
+    </div>
   </body>
 </html>

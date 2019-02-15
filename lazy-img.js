@@ -1,6 +1,7 @@
 const tagName = 'lazy-img';
 var template = document.createElement('template');
-template.innerHTML = `<img id="image"/>`;
+template.innerHTML = `<img style="width: 100%" id="image"/>`;
+
 
 const isIntersecting = ({
 	isIntersecting
